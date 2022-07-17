@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, Param, Post, Put } from '@nestjs/common';
 import { F2estaticService } from './f2estatic.service';
 
 @Controller('f2estatic')
@@ -7,6 +7,7 @@ export class F2estaticController {
 
   @Get('project')
   async getProject() {
+    throw new HttpException('Project already exists', 400);
     const data = await this.f2estaticService.getData();
     return data;
   }
