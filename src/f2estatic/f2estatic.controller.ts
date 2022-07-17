@@ -1,7 +1,9 @@
 import { Body, Controller, Get, HttpException, Param, Post, Put } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CreateProjectDto } from './f2estatic.dto';
 import { F2estaticService } from './f2estatic.service';
 
+@ApiTags('物理机管理')
 @Controller('f2estatic')
 export class F2estaticController {
   constructor(private readonly f2estaticService: F2estaticService) {}
@@ -13,6 +15,7 @@ export class F2estaticController {
     return data;
   }
 
+  @ApiOperation({ summary: '获取项目详情' })
   @Get('project/:id')
   async getProjectById(@Param('id') id: string) {
     const data = await this.f2estaticService.getData();
