@@ -1,4 +1,5 @@
 import { Body, Controller, Get, HttpException, Param, Post, Put } from '@nestjs/common';
+import { CreateProjectDto } from './f2estatic.dto';
 import { F2estaticService } from './f2estatic.service';
 
 @Controller('f2estatic')
@@ -19,7 +20,7 @@ export class F2estaticController {
   }
 
   @Post('project')
-  async createProject(@Body() body) {
+  async createProject(@Body() body: CreateProjectDto) {
     return body;
   }
 
